@@ -345,7 +345,7 @@ export default function App() {
             <h2>YAAAY!🎉🌹❤️</h2>
             <img
               className="fireworks"
-              src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
+              src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGJ1ZDJxbHpkOGRzanhleWtkMWt2ejd2c3o1MWNzMng4bnlrY21nNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/enrq327a3sMIJAS5jA/giphy.gif"
               alt="Fireworks"
             />
           </section>
