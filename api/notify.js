@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         const { myValentine, noCount } = req.body || {};
 
         await resend.emails.send({
-            from: "Valentine Bot <onboarding@resend.dev>",
+            from: "Valentine Bot <hello@0xb13.xyz>",
             to: process.env.NOTIFY_EMAIL,
             subject: "Happy Valentine's 🌹",
             text: `
@@ -21,11 +21,18 @@ export default async function handler(req, res) {
 
             She said no ${noCount ?? 0} times.
 
-            Time: ${new Date().toISOString()}
+            Time: ${new Date().toLocaleString("en-GB", {
+                year: "numeric",
+                month: "short",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
+            })
+                }
 
             Regards,
             Cupid
-            `
+                `
         });
 
         return res.status(200).json({ ok: true });
