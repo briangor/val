@@ -88,10 +88,6 @@ button {
 }
 
 .fireworks {
-  /* width: min(380px, 90vw);
-  margin: 0 auto;
-  display: block; */
-
   display: block;
   width: 100%;
   max-width: 380px;
