@@ -171,6 +171,15 @@ export default function App() {
     [moveNo]
   );
 
+  const localTime = new Date().toLocaleString("en-GB", {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+
   const onYesClick = useCallback(async () => {
     setAccepted(true);
     resizeConfettiCanvas();
@@ -214,6 +223,7 @@ export default function App() {
         body: JSON.stringify({
           myValentine: myValentine || "Jane Doe" || null,
           noCount,
+          localTime,
         }),
       }).catch(console.error);
     }
