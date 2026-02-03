@@ -171,12 +171,13 @@ export default function App() {
     resizeConfettiCanvas();
     fullScreenConfetti();
 
-    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-    const notifyTo = import.meta.env.VITE_NOTIFY_EMAIL;
+    // EmailJS removed
+    /*  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+     const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+     const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+     const notifyTo = import.meta.env.VITE_NOTIFY_EMAIL; */
 
-    if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY && notifyTo) {
+    /* if (SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY && notifyTo) {
       try {
         await emailjs.send(
           SERVICE_ID,
@@ -192,7 +193,26 @@ export default function App() {
       } catch (err) {
         console.error("Email notification failed:", err);
       }
+    } */
+
+    // Vercel serverless function
+    if (import.meta.env.DEV) {
+      console.log("DEV MODE");
+      console.log(`My Valentine ${myValentine} said no ${noCount} times`);
+      return;
     }
+
+    if (import.meta.env.PROD) {
+      fetch("/api/notify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          myValentine: myValentine || "Jane Doe" || null,
+          noCount,
+        }),
+      }).catch(console.error);
+    }
+
   }, [resizeConfettiCanvas, fullScreenConfetti, myValentine, noCount]);
 
   useEffect(() => {
