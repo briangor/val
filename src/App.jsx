@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import confetti from "canvas-confetti";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 import "./App.css";
 
 export default function App() {
@@ -30,6 +30,11 @@ export default function App() {
   const yesScaleRef = useRef(1);
   const noScaleRef = useRef(1);
   const confettiInstanceRef = useRef(null);
+  // TODO: use worker
+  /* const confettiInstanceRef = confetti.create(canvas, {
+    resize: true,
+    useWorker: true,
+  }); */
 
   // const [accepted, setAccepted] = useState(false);
   const [accepted, setAccepted] = useState(() => readBool(STORAGE_ACCEPTED_KEY, false));
